@@ -1,0 +1,53 @@
+/* Override the form and it's button so that it formats nicely with our add to wishlist button */ 
+.product form.cart {
+	clear: both;
+}
+
+.product form.cart .single_add_to_cart_button {
+	float: right;
+}
+/* END Override */
+
+/* Our Custom Styles */
+.mumf-wishlist-button-container {
+	float: right;
+	clear: both;
+}
+
+.mumf-wishlist-button-container .single_add_to_wishlist {
+	margin: 10px 0px 10px 0px;
+}
+/* END Our Custom Styles */
+
+
+/* Let's handle smaller screens */
+@media only screen and (max-width: 340px) {
+
+	.mumf-wishlist-button-container {
+		float: none;
+		clear: both;
+		text-align: center;
+	}	
+
+	.product form { 
+		text-align: center;
+	}
+
+	.product form.cart .single_add_to_cart_button {
+		float: none;
+		margin-top: 10px;
+	}	
+
+	.mumf-wishlist-button-container .single_add_to_wishlist {
+		margin: 0px 0px 10px 0px;
+	}	
+
+	.single-product div.quantity {
+	  margin-right: 0;
+	  padding-right: 0;
+	  float: none;
+	  border-right: none;
+	}
+
+}
+/* END */

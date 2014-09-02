@@ -65,7 +65,11 @@
 	// Gets the assets for the plugin
 	function mumf_wishlist_get_assets() {
 
-		// Get the styles.
+		// Get the JS
+		wp_enqueue_script( 'mumf-wishlist-script', plugins_url( 'assets/js/main.js', __FILE__ ));
+
+
+		// Get the styles
 		wp_register_style('mumf-wishlist-styles', plugins_url('/assets/css/main.css', __FILE__ ));
 		wp_enqueue_style('mumf-wishlist-styles');	
 

@@ -48,7 +48,10 @@
 		// Let's catch any errors
 		catch (e) {
 			console.log('Data is not in JSON format');
+			// Prevent further execution
+			return false;
 		}
+		// END try/catch
 
 	}
 

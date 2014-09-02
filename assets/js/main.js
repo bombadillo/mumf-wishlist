@@ -17,11 +17,13 @@
 
 	 	// Get the value of the product id
 	 	var productId = $('form.cart').find('input[name=add-to-cart]').val();
+	 	// Object to hold our parameters for the request.
+	 	var data = { productId: productId, action: 'add' };
 
 		$.ajax({
 			type: "POST",
 			url: oUrls.add,
-			data: { productId: productId },
+			data: data,
 			success: onWishListAdd,
 			dataType: 'text'
 		});	 	
@@ -36,9 +38,18 @@
 
 	// When the response for add from the server is successful
 	function onWishListAdd(data) {
-		// Encode the data into JSON
-		var data = JSON.parse(data);
-		console.log(data);
+
+		// Attempt JSON encode
+		try {
+			// Encode the data into JSON
+			var data = JSON.parse(data);
+			console.log(data);
+		} 
+		// Let's catch any errors
+		catch (e) {
+			console.log('Data is not in JSON format');
+		}
+
 	}
 
 	/*****************************************************************************/

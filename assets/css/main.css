@@ -21,6 +21,100 @@
 .mumf-wishlist-message {
 	display: none;
 }
+
+.mumf-wishlist-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 10;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.mumf-wishlist-modal {
+	background-color: #FFFDF7;
+	border-radius: 5px;
+	display: inline-block;
+	margin-top: 200px;
+	max-width: 800px;
+	min-width: 300px;
+	position: relative;
+	width: 92%;
+	z-index: 9020;	
+	padding: 10px;
+}
+
+.mumf-wishlist-modal .close {
+	position: absolute;
+	right: 10px;
+	top: 5px;
+}
+
+.mumf-wishlist-modal .close:hover {
+	color: #54465E;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.mumf-wishlist-modal-container {
+	display: none;
+	bottom: 0;
+	left: 0;
+	overflow-x: auto;
+	overflow-y: scroll;
+	position: fixed;
+	right: 0;
+	text-align: center;
+	top: 0;
+	z-index: 9010;
+}
+
+.mumf-wishlist-modal ul {
+	list-style: none outside none;
+    margin: 0;
+    padding: 0;	
+    text-align: left;
+}
+
+.mumf-wishlist-modal ul li:first-child {
+	padding-top: 0px;
+}
+
+.mumf-wishlist-modal ul li {
+	clear: both;
+	padding-top: 10px;
+	padding-left: 10px;
+	font-weight: bold;
+}
+
+.mumf-wishlist-item-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.mumf-wishlist-item-container .item {	
+	display: inline-block;
+	margin: 0;
+	padding: 10px;
+}
+
+.mumf-wishlist-item-container .mumf-wishlist-buttons {
+    padding: 6px 0px 0px 0px;
+    text-align: center;
+}
+
+
+.mumf-wishlist-modal img {
+	box-shadow: 0 17px 15px -15px rgba(0, 0, 0, 0.8);
+	border-radius: 4px;
+}
+
+.mumf-wishlist-right {
+	float: right;
+}
 /* END Our Custom Styles */
 
 

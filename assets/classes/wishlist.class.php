@@ -18,11 +18,31 @@ class Wishlist {
 	/**
 	 * Name:     getFromWishlist
 	 * Purpose:  To get a single item from the wishlist
-	 * Params:   {int} iWishlistId   The post id of the item to retrieve
+	 * Params:   {int} iWishlistId   The id of the item to retrieve
 	 * Returns:  +ve true
 	 *		     -ve false
 	 */
 	public function getFromWishlist($iWishlistId) {
+		global $wpdb;
+
+		// Prepare the query with params
+		$sql = $wpdb->prepare('SELECT id FROM wp_mumf_wishlist where id = %s AND user_id = %d', $iWishlistId, $this->user_id);
+
+		// Submit query
+		$wpdb->query($sql);
+
+		// Return the number of rows
+		return $wpdb->result->num_rows > 0;
+	}
+
+	/**
+	 * Name:     getFromWishlist
+	 * Purpose:  To get a single item from the wishlist
+	 * Params:   {int} iWishlistId   The post id of the item to retrieve
+	 * Returns:  +ve true
+	 *		     -ve false
+	 */
+	public function getFromWishlistWithPostId($iWishlistId) {
 		global $wpdb;
 
 		// Prepare the query with params
@@ -34,6 +54,7 @@ class Wishlist {
 		// Return the number of rows
 		return $wpdb->result->num_rows > 0;
 	}
+	
 
 	/**
 	 * Name:     getAll
@@ -52,6 +73,23 @@ class Wishlist {
 
 		// Set the classes fullWishlist to the new result
 		$this->fullWishlist = $wpdb->last_result;
+
+		// Loop the wishlist
+		foreach ($this->fullWishlist as $key => $value) {
+			// Get the permalink
+			$permalink = get_permalink($value->post_id);
+			// Get the title
+			$title = get_the_title($value->post_id);
+			// Get the thumbnail
+			$thumbnail = get_the_post_thumbnail($value->post_id, 'thumbnail'); 
+
+			// Add permalink to wishlist item
+			$value->link = $permalink;
+			// Add title to wishlist item
+			$value->thumbnail = $thumbnail;
+			// Add thumbnail to wishlist item
+			$value->thumbnail = $thumbnail;
+		}
 
 		// Return the number of rows
 		return $wpdb->result->num_rows > 0;
@@ -91,7 +129,7 @@ class Wishlist {
 		global $wpdb;
 
 		// Prepare the query with params
-		$sql = $wpdb->prepare("DELETE FROM wp_mumf_wishlist WHERE post_id = %s && user_id = %d", $iWishlistId, $this->user_id);
+		$sql = $wpdb->prepare("DELETE FROM wp_mumf_wishlist WHERE id = %s && user_id = %d", $iWishlistId, $this->user_id);
 
 		// Submit query
 		$wpdb->query($sql);

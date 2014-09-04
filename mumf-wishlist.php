@@ -68,7 +68,7 @@
 	function mumf_wishlist_get_assets() {
 
 		// Get the JS
-		wp_enqueue_script( 'mumf-wishlist-script', plugins_url( 'assets/js/main.js', __FILE__ ));
+		wp_enqueue_script( 'mumf-wishlist-script', plugins_url( 'assets/js/main.js', __FILE__ ), array( 'jquery' ));
 
 
 		// Get the styles
@@ -98,8 +98,8 @@
 	// Calls the function after the product summary has loaded
 	add_action('woocommerce_single_product_summary', 'mumf_wishlist_add_button',40); 
 
-	// Calls the function after the product has fully loaded
-	add_action('woocommerce_after_single_product', 'mumf_wishlist_get_assets');
+	// Calls the function after php has initialised
+	add_action('init', 'mumf_wishlist_get_assets');
 
 	/*****************************************************************************/
 

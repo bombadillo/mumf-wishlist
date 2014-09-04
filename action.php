@@ -31,14 +31,6 @@
 	// Create instance of wishlist class
 	$myWishlist = new Wishlist();
 
-	// If the action is not getAll
-	if ($sAction != 'getAll') {
-		// Call class function to identify if the product is already in user wishlist
-		$bExists = $myWishlist->getFromWishlist($iWishlistId);
-	}
-
-
-
 	// Switch the action
 	switch ($sAction) {
 
@@ -63,6 +55,9 @@
 
 		// Adding a wishlist item
 		case 'add':
+			// Call class function to identify if the product is already in user wishlist
+			$bExists = $myWishlist->getFromWishlistWithPostId($iWishlistId);		
+
 			// If the item exists
 			if ($bExists) {
 				$aResponse['message'] = 'The item is already in your wishlist.';
@@ -83,6 +78,9 @@
 
 		// Deleting a wishlist item
 		case 'delete':
+
+			// Call class function to identify if the product is already in user wishlist
+			$bExists = $myWishlist->getFromWishlist($iWishlistId);		
 			// If the item does not exist
 			if (!$bExists) {
 				$aResponse['message'] = 'The item is not in in your wishlist.';

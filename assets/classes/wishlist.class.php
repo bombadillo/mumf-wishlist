@@ -86,7 +86,7 @@ class Wishlist {
 			// Add permalink to wishlist item
 			$value->link = $permalink;
 			// Add title to wishlist item
-			$value->thumbnail = $thumbnail;
+			$value->title = $title;
 			// Add thumbnail to wishlist item
 			$value->thumbnail = $thumbnail;
 		}

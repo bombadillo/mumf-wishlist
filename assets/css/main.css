@@ -17,6 +17,10 @@
 .mumf-wishlist-button-container .single_add_to_wishlist {
 	margin: 10px 0px 10px 0px;
 }
+
+.mumf-wishlist-message {
+	display: none;
+}
 /* END Our Custom Styles */
 
 

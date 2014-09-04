@@ -237,7 +237,7 @@
 			// Current item in array
 			var item = aList[i];
 			// Add list item
-			html += '<div class="item item-'+ item.id +'"><div class="image-container">'+ item.thumbnail +'</div> <div class="mumf-wishlist-buttons"><a href="'+ item.link +'" class="button">View</a><a href="javascript:void(0)" class="button mumf-wishlist-remove" data-id="'+ item.id+ '">X</a></div></div>'; 
+			html += '<div class="item item-'+ item.id +'"><div class="title">'+ item.title +'</div><div class="image-container">'+ item.thumbnail +'</div> <div class="mumf-wishlist-buttons"><a href="'+ item.link +'" class="button">View</a><a href="javascript:void(0)" class="button mumf-wishlist-remove" data-id="'+ item.id+ '">X</a></div></div>'; 
 		}
 
 		// End ul

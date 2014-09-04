@@ -27,9 +27,11 @@
 		    $sql = "CREATE TABLE $table_name (
 				    id int(11) NOT NULL AUTO_INCREMENT,
 				    post_id BIGINT(20) UNSIGNED NOT NULL,
+				    user_id BIGINT(20) UNSIGNED NOT NULL,
 				    date DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
 				    PRIMARY KEY (id),
-				    FOREIGN KEY (post_id) REFERENCES wp_posts(ID)
+				    FOREIGN KEY (post_id) REFERENCES wp_posts(ID),
+				    FOREIGN KEY (user_id) REFERENCES wp_users(ID)
 		    )";
 
 		    // Reference to upgrade.php file

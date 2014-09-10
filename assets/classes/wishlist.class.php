@@ -7,6 +7,10 @@ class Wishlist {
 	// Set private variables
 	private $user_id;
 
+	// Set default private variables
+	private $imageWidth = 150;
+	private $imageHeight = 250;
+
 	function __construct() {
 		// Set the current user for the class
 		global $current_user;
@@ -32,7 +36,7 @@ class Wishlist {
 		$wpdb->query($sql);
 
 		// Return the number of rows
-		return $wpdb->result->num_rows > 0;
+		return $wpdb->num_rows > 0;
 	}
 
 	/**
@@ -52,7 +56,7 @@ class Wishlist {
 		$wpdb->query($sql);
 
 		// Return the number of rows
-		return $wpdb->result->num_rows > 0;
+		return $wpdb->num_rows > 0;
 	}
 	
 
@@ -69,7 +73,7 @@ class Wishlist {
 		$date = new DateTime();
 		
 		// Prepare the query with params
-		$wpdb->query("SELECT * FROM wp_mumf_wishlist WHERE user_id = $this->user_id");
+		$wpdb->query("SELECT * FROM wp_mumf_wishlist WHERE user_id = $this->user_id");		
 
 		// Set the classes fullWishlist to the new result
 		$this->fullWishlist = $wpdb->last_result;
@@ -81,7 +85,7 @@ class Wishlist {
 			// Get the title
 			$title = get_the_title($value->post_id);
 			// Get the thumbnail
-			$thumbnail = get_the_post_thumbnail($value->post_id, 'thumbnail'); 
+			$thumbnail = get_the_post_thumbnail($value->post_id, array($this->imageWidth, $this->imageHeight)); 
 
 			// Add permalink to wishlist item
 			$value->link = $permalink;
@@ -92,7 +96,7 @@ class Wishlist {
 		}
 
 		// Return the number of rows
-		return $wpdb->result->num_rows > 0;
+		return $wpdb->num_rows > 0;
 	}	
 
 	/**

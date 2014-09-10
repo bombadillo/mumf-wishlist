@@ -99,6 +99,12 @@
 			$(this).remove();
 		});
 	});		
+
+	// Listen for click on modal close button
+	$(document).on('click', '.mumf-wishlist-modal .close', function(e) {		
+		// Call function to hide modal
+		hideModal();
+	});		
 	
 	
 

@@ -51,7 +51,7 @@
 		var data = { action: 'getAll' };
 
 		$.ajax({
-			type: "POST",
+			type: "GET",
 			url: oUrls.actions,
 			data: data,
 			success: onWishListGetAll,
@@ -91,6 +91,15 @@
 		hideModal();
 	});	
 	
+	// Listen for click on message close button
+	$(document).on('click', '.mumf-wishlist-message .close', function(e) {		
+		// Slide up parent
+		$(this).parent().slideUp(function() {
+			// Remove the element
+			$(this).remove();
+		});
+	});		
+	
 	
 
 	 /*****************************************************************************/
@@ -121,13 +130,13 @@
 		// If there are no errors
 		if (data.errorCode > 0) {			
 			// Set the message HTML
-			var messageHtml = '<div class="woocommerce-message mumf-wishlist-message"><a class="button mumf-wishlist-view" href="javascript:void(0)">View wishlist</a> '+ productTitle +' was successfully added to your wishlist.</div>';
+			var messageHtml = '<div class="woocommerce-message mumf-wishlist-message"><a class="button mumf-wishlist-view" href="javascript:void(0)">View wishlist</a> '+ productTitle +' was successfully added to your wishlist. <div class="close">x</div></div>';
 		// Otherwise there are errors
 		} else {
 			// Set the message or use default
 			var message = data.message ? data.message : 'Unable to add product to wishlist';
 			// Set the message HTML
-			var messageHtml = '<div class="woocommerce-error mumf-wishlist-message">'+ message +'</div>';
+			var messageHtml = '<div class="woocommerce-error mumf-wishlist-message">'+ message +'<div class="close">x</div></div>';
 		}
 		// END if errors
 
@@ -203,7 +212,7 @@
 			// Set the message or use default
 			var message = data.message ? data.message : 'Unable to retrieve wishlist :(';
 			// Set the message HTML
-			var messageHtml = '<div class="woocommerce-error mumf-wishlist-message">'+ message +'</div>';
+			var messageHtml = '<div class="woocommerce-error mumf-wishlist-message">'+ message +'<div class="close">x</div></div>';
 			
 			// Slide up any errormessages
 			$('.mumf-wishlist-message').slideUp(function() {
@@ -237,7 +246,7 @@
 			// Current item in array
 			var item = aList[i];
 			// Add list item
-			html += '<div class="item item-'+ item.id +'"><div class="title">'+ item.title +'</div><div class="image-container">'+ item.thumbnail +'</div> <div class="mumf-wishlist-buttons"><a href="'+ item.link +'" class="button">View</a><a href="javascript:void(0)" class="button mumf-wishlist-remove" data-id="'+ item.id+ '">X</a></div></div>'; 
+			html += '<div class="item item-'+ item.id +'"><div class="title">'+ item.title +'</div><div class="image-container"><a href="'+ item.link +'" alt="'+ item.title +'">'+ item.thumbnail +'</a></div> <div class="mumf-wishlist-buttons"><a href="'+ item.link +'" class="button">View</a><a href="javascript:void(0)" class="button mumf-wishlist-remove" data-id="'+ item.id+ '">X</a></div></div>'; 
 		}
 
 		// End ul

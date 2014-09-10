@@ -81,6 +81,7 @@
 
 			// Call class function to identify if the product is already in user wishlist
 			$bExists = $myWishlist->getFromWishlist($iWishlistId);		
+
 			// If the item does not exist
 			if (!$bExists) {
 				$aResponse['message'] = 'The item is not in in your wishlist.';

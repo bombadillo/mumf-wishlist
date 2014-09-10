@@ -106,9 +106,12 @@
     text-align: center;
 }
 
+.mumf-wishlist-item-container .mumf-wishlist-buttons .button {
+    box-shadow: none;
+}
 
 .mumf-wishlist-modal img {
-	box-shadow: 0 17px 15px -15px rgba(0, 0, 0, 0.8);
+	box-shadow: 0 17px 15px -21px rgba(0, 0, 0, 0.8);
 	border-radius: 4px;
 }
 
@@ -119,6 +122,23 @@
 
 .mumf-wishlist-right {
 	float: right;
+}
+
+.mumf-wishlist-message .close {
+	position: absolute;
+	right: 7px;
+	top: -3px;
+	cursor: pointer;
+}
+
+.mumf-wishlist-message .close:hover {
+	color: #54465E;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.mumf-wishlist-message .button {
+	margin-right: 25px;
 }
 /* END Our Custom Styles */
 

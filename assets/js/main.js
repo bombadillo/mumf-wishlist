@@ -245,7 +245,7 @@
 	function showWishListModal(aList) {
 		
 		// Set html
-		var html = '<div class="close">x</div><h3>Your Wishlist</h3><div class="mumf-wishlist-item-container">';
+		var html = '<div class="close">x</div><h3>Wishlist</h3><div class="mumf-wishlist-item-container">';
 
 		// Loop each of the items in array
 		for (var i = 0; i < aList.length; i++) {
@@ -315,10 +315,10 @@
 	// Adds a button to the main menu to view the wishlist
 	function addViewWishlistToMenu() {
 		// Set the HTML
-		var html = '<li class="page_item"><a href="javascript:void(0)" class="mumf-wishlist-view">My Wishlist</a></li>';
+		var html = '<li class="page_item"><a href="javascript:void(0)" class="mumf-wishlist-view">Wishlist</a></li>';
 
 		// Append to main nav
-		$('#main-nav').append(html);
+		$('#top-nav li:first').after(html);
 	}
 
 	function setupModalOverlay() {

@@ -31,6 +31,13 @@
 	// Create instance of wishlist class
 	$myWishlist = new Wishlist();
 
+	// If the user id < 1 then we don't have a user
+	if ($myWishlist->user_id < 1) {
+		$aResponse['message'] = 'You must be logged in to add an item to your wishlist.';
+		$aResponse['errorCode'] = -1;
+		die(json_encode($aResponse));
+	}
+
 	// Switch the action
 	switch ($sAction) {
 

@@ -5,7 +5,7 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/wp-load.php");
 class Wishlist {
 
 	// Set private variables
-	private $user_id;
+	public $user_id;
 
 	// Set default private variables
 	private $imageWidth = 150;
@@ -14,8 +14,11 @@ class Wishlist {
 	function __construct() {
 		// Set the current user for the class
 		global $current_user;
+
+		// Call function to get user info
 		get_currentuserinfo();
 
+		// Set the classes user_id property to the id
 		$this->user_id = $current_user->ID;		
 	}
 	
